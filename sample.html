@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Enter Quantity</title>
+    <style>
+        /* Styles for the quantity entry page ... */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e4eae7;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+        /* Styles for the quantity form */
+        .quantity-form {
+            max-width: 400px;
+            margin: 20px auto;
+            background-color: #1a5b38;
+            border-radius: 7px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        label {
+            font-weight: bold;
+            color: #169339;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #1c5131;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+        button[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #30af80;
+            color: #ffffff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        button[type="submit"]:hover {
+            background-color: #186852;
+        }
+        /* Styles for the place order button */
+        .place-order-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+        .place-order-button {
+            background-color: #1c7d5b;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            padding: 15px 30px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 18px;
+        }
+        .place-order-button:hover {
+            background-color: #43b899;
+        }
+        /* Styles for the notification container */
+        .notification-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #43b899;
+            color: #ffffff;
+            border-radius: 7px;
+            display: none;
+        }
+    </style>
+    <script>
+        function handlePlaceOrder() {
+            // Display the notification container
+            document.getElementById("notification-container").style.display = "block";
+            
+            // Set a timeout to redirect to farmerhomepage.html after showing the notification for a few seconds
+            setTimeout(function() {
+                window.location.href = "farmerhomepage.html";
+            }, 3000); // 3 seconds delay
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Enter Quantity for Selected Crops</h2>
+        <div class="quantity-form">
+            <form action="save_quantity.php" method="POST">
+                <div>
+                    <label for="quantity1">Crop 1 Quantity:</label>
+                    <input type="text" id="quantity1" name="quantity1" placeholder="Enter quantity in quintals or kgs" required>
+                </div>
+                <div>
+                    <label for="quantity2">Crop 2 Quantity:</label>
+                    <input type="text" id="quantity2" name="quantity2" placeholder="Enter quantity in quintals or kgs" required>
+                </div>
+                <div>
+                    <label for="quantity3">Crop 3 Quantity:</label>
+                    <input type="text" id="quantity3" name="quantity3" placeholder="Enter quantity in quintals or kgs" required>
+                </div>
+                <div>
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+        
+        <div class="place-order-container">
+            <button class="place-order-button" onclick="handlePlaceOrder()">Place Order</button>
+        </div>
+    </div>
+    
+    <!-- Notification container for order placement message -->
+    <div id="notification-container" class="notification-container">
+        Order was placed!
+    </div>
+</body>
+</html>
